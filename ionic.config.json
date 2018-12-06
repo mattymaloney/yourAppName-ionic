@@ -1,0 +1,12 @@
+{
+  "name": "yourAppsName1",
+  "integrations": {},
+  "type": "ionic1",
+  "watchPatterns": [
+    "scss/**/*",
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ],
+  "id": "52e4eb59"
+}
