@@ -1,6 +1,8 @@
 {
   "name": "yourAppsName1",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic1",
   "watchPatterns": [
     "scss/**/*",

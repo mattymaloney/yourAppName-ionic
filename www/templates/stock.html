@@ -1,0 +1,93 @@
+<ion-view view-title="{{ticker}}">
+  <div class="bar bar-subheader bar-light">
+
+    <div class="buttons" side="left">
+      <div class="button button-clear">
+        <h6>{{stockDetailsData.companyName}}</h6>
+      </div>
+    </div>
+
+    <h2 class="title button-left button-right">{{ stockPriceData.latestPrice | shrinkNumber:2 }}</h2>
+
+    <div class="buttons" side="right">
+        <div class="button button-clear">
+          <h6>{{ (100 * stockPriceData.changePercent) | number:3 }}%</h6>
+        </div>
+      </div>
+    </div>
+
+  <ion-content class="has-subheader">
+
+    <!-- <iframe ng-src="{{chartUrl}}" frameborder="0" style="width: 100%; height: 400px;"></iframe> -->
+
+    <div class="button-bar">
+      <div ng-click="switchChart(1)" ng-class="chartSelect == 1 ? 'active' : ''" class="button">1</div>
+      <div ng-click="switchChart(2)" ng-class="chartSelect == 2 ? 'active' : ''" class="button">2</div>
+      <div ng-click="switchChart(3)" ng-class="chartSelect == 3 ? 'active' : ''" class="button">3</div>
+      <div ng-click="switchChart(4)" ng-class="chartSelect == 4 ? 'active' : ''" class="button">4</div>
+      <div ng-click="switchChart(5)" ng-class="chartSelect == 5 ? 'active' : ''" class="button">5</div>
+    </div>
+
+    <div ng-if="chartSelect == 1">chart 1</div>
+    <div ng-if="chartSelect == 2">chart 2</div>
+    <div ng-if="chartSelect == 3">chart 3</div>
+    <div ng-if="chartSelect == 4" class="chartStyle" nv-chart="chartOptions" style="height: 70vh;"></div>
+    <div ng-if="chartSelect == 5">chart 5</div>
+
+
+    <div class="card">
+      <div class="item item-divider">Market Data</div>
+      <div class="row row-center">
+        <div class="col">Label</div>
+        <div class="col">Bid: </div>
+        <div class="col">{{stockPriceData.iexBidPrice | shrinkNumber:2}}</div>
+        <div class="col">Ask: </div>
+        <div class="col">{{stockPriceData.iexAskPrice | shrinkNumber:2}}</div>
+      </div>
+      <div class="row row-center">
+        <div class="col">Day</div>
+        <div class="col">High:</div>
+        <div class="col">{{stockPriceData.high | shrinkNumber:2}}</div>
+        <div class="col">Low:</div>
+        <div class="col">{{stockPriceData.low | shrinkNumber:2}}</div>
+      </div>
+      <div class="row row-center">
+        <div class="col">52-week</div>
+        <div class="col">High:</div>
+        <div class="col">{{stockPriceData.week52High | shrinkNumber:2}}</div>
+        <div class="col">Low:</div>
+        <div class="col">{{stockPriceData.week52Low | shrinkNumber:2}}</div>
+      </div>
+      <div class="row row-center">
+        <div class="col"></div>
+        <div class="col">PE:</div>
+        <div class="col">{{stockPriceData.peRatio | shrinkNumber:2}}</div>
+        <div class="col">Cap:</div>
+        <div class="col">{{stockPriceData.marketCapM}}M</div>
+      </div>
+      <div class="row row-center">
+        <div class="col"></div>
+        <div class="col">Volume:</div>
+        <div class="col">{{stockPriceData.latestVolume.toLocaleString()}}</div>
+        <div class="col">Avg Volume:</div>
+        <div class="col">{{}}</div>
+      </div>
+      </div>
+
+    <div class="card">
+      <div class="item item-divider">Notes</div>
+      <div class="item">
+        <h2>Note Title</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="item item-divider">News</div>
+      <a class="item item-icon-right">
+        <h2>News Story Title</h2>
+        <i class="icon ion-ios-arrow-right"></i>
+      </a>
+    </div>
+
+  </ion-content>
+</ion-view>

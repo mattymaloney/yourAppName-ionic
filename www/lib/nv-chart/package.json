@@ -1,0 +1,44 @@
+{
+  "name": "nv-chart",
+  "version": "0.1.1",
+  "description": "AngularJS D3.js charting using NVD3.js",
+  "main": "nv-chart.min.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/j3ko/nv-chart.git"
+  },
+  "keywords": [
+    "angular",
+    "angularjs",
+    "nvd3",
+    "d3",
+    "ng-d3",
+    "ngd3",
+    "nvChart",
+    "nv-chart"
+  ],
+  "author": "Jeffrey Ko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/j3ko/nv-chart/issues"
+  },
+  "homepage": "https://github.com/j3ko/nv-chart",
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-cli": "^0.1.13",
+    "grunt-karma": "^0.8.2",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-uglify": "^0.4.0",
+    "grunt-contrib-jasmine": "^0.6.3",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-less": "^0.11.0",
+    "karma": "^0.12.12",
+    "karma-jasmine": "^0.1.5",
+    "karma-chrome-launcher": "^0.1.3",
+    "karma-phantomjs-launcher": "^0.1.4"
+  }
+}
