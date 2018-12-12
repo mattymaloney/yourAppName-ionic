@@ -1,26 +1,31 @@
-<ion-view view-title="{{ticker}}">
-  <div class="bar bar-subheader bar-light">
+<ion-view view-title="{{ticker}}" drag-content="false">
+
+  <ion-nav-bar id="stock-navbar" class="bar-dark" ng-style="reactiveColor">
+    <ion-nav-back-button></ion-nav-back-button>
+  </ion-nav-bar>
+
+  <div class="bar bar-subheader bar-light" id="stock-subheader-bar">
 
     <div class="buttons" side="left">
-      <div class="button button-clear">
-        <h6>{{stockDetailsData.companyName}}</h6>
+      <div class="button button-clear display-flex">
+        <h6 id="stock-name">{{stockDetailsData.companyName}}</h6>
       </div>
     </div>
 
-    <h2 class="title button-left button-right">{{ stockPriceData.latestPrice | shrinkNumber:2 }}</h2>
+    <h2 class="title button-left button-right" id="stock-price">{{ stockPriceData.latestPrice | shrinkNumber:2 }}</h2>
 
     <div class="buttons" side="right">
         <div class="button button-clear">
-          <h6>{{ (100 * stockPriceData.changePercent) | number:3 }}%</h6>
+          <h6 id="stock-change" ng-class="stockPriceData.change < 0 ? 'assertive' : 'balanced'"><span ng-if="stockPriceData.change > 0">+</span>{{ stockPriceData.change | shrinkNumber:2 }}<br>(<span ng-if="stockPriceData.change > 0">+</span>{{ (100 * stockPriceData.changePercent) | number:3 }}%)</h6>
         </div>
       </div>
     </div>
 
-  <ion-content class="has-subheader">
+  <ion-content class="has-subheader" scrollbar-y="false">
 
     <!-- <iframe ng-src="{{chartUrl}}" frameborder="0" style="width: 100%; height: 400px;"></iframe> -->
 
-    <div class="button-bar">
+    <div class="button-bar" id="short-button-bar">
       <div ng-click="switchChart(1)" ng-class="chartSelect == 1 ? 'active' : ''" class="button">1</div>
       <div ng-click="switchChart(2)" ng-class="chartSelect == 2 ? 'active' : ''" class="button">2</div>
       <div ng-click="switchChart(3)" ng-class="chartSelect == 3 ? 'active' : ''" class="button">3</div>
@@ -31,46 +36,46 @@
     <div ng-if="chartSelect == 1">chart 1</div>
     <div ng-if="chartSelect == 2">chart 2</div>
     <div ng-if="chartSelect == 3">chart 3</div>
-    <div ng-if="chartSelect == 4" class="chartStyle" nv-chart="chartOptions" style="height: 70vh;"></div>
+    <div ng-if="chartSelect == 4" class="chartStyle" nv-chart="chartOptions" id="interactiveChart"></div>
     <div ng-if="chartSelect == 5">chart 5</div>
 
 
-    <div class="card">
-      <div class="item item-divider">Market Data</div>
+    <div class="card" id="market-data-card">
+      <div class="item item-divider">Market Data <span class="last-trade">Last trade: {{stockPriceData.latestTime | date:'h:mm a'}}</span></div>
       <div class="row row-center">
         <div class="col">Label</div>
         <div class="col">Bid: </div>
-        <div class="col">{{stockPriceData.iexBidPrice | shrinkNumber:2}}</div>
+        <div class="col col-20">{{stockPriceData.iexBidPrice | shrinkNumber:2}}</div>
         <div class="col">Ask: </div>
-        <div class="col">{{stockPriceData.iexAskPrice | shrinkNumber:2}}</div>
+        <div class="col col-20">{{stockPriceData.iexAskPrice | shrinkNumber:2}}</div>
       </div>
       <div class="row row-center">
         <div class="col">Day</div>
         <div class="col">High:</div>
-        <div class="col">{{stockPriceData.high | shrinkNumber:2}}</div>
+        <div class="col col-20">{{stockPriceData.high | shrinkNumber:2}}</div>
         <div class="col">Low:</div>
-        <div class="col">{{stockPriceData.low | shrinkNumber:2}}</div>
+        <div class="col col-20">{{stockPriceData.low | shrinkNumber:2}}</div>
       </div>
       <div class="row row-center">
         <div class="col">52-week</div>
         <div class="col">High:</div>
-        <div class="col">{{stockPriceData.week52High | shrinkNumber:2}}</div>
+        <div class="col col-20">{{stockPriceData.week52High | shrinkNumber:2}}</div>
         <div class="col">Low:</div>
-        <div class="col">{{stockPriceData.week52Low | shrinkNumber:2}}</div>
+        <div class="col col-20">{{stockPriceData.week52Low | shrinkNumber:2}}</div>
       </div>
       <div class="row row-center">
         <div class="col"></div>
         <div class="col">PE:</div>
-        <div class="col">{{stockPriceData.peRatio | shrinkNumber:2}}</div>
+        <div class="col col-20">{{stockPriceData.peRatio | shrinkNumber:2}}</div>
         <div class="col">Cap:</div>
-        <div class="col">{{stockPriceData.marketCapM}}M</div>
+        <div class="col col-20">{{stockPriceData.marketCapM}}M</div>
       </div>
       <div class="row row-center">
         <div class="col"></div>
         <div class="col">Volume:</div>
-        <div class="col">{{stockPriceData.latestVolume.toLocaleString()}}</div>
+        <div class="col col-20">{{stockPriceData.latestVolume.toLocaleString()}}</div>
         <div class="col">Avg Volume:</div>
-        <div class="col">{{}}</div>
+        <div class="col col-20">{{}}</div>
       </div>
       </div>
 
