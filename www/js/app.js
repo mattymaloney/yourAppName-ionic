@@ -2,6 +2,7 @@ angular.module('yourAppsName', [
   'ionic', 
   // 'nvd3',
   'nvChart',
+  'angular-cache',
   'yourAppsName.controllers',
   'yourAppsName.services',
   'yourAppsName.filters',

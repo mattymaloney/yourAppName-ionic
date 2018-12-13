@@ -77,12 +77,14 @@
         <div class="col">Avg Volume:</div>
         <div class="col col-20">{{}}</div>
       </div>
-      </div>
+    </div>
 
-    <div class="card">
-      <div class="item item-divider">Notes</div>
-      <div class="item">
-        <h2>Note Title</h2>
+    <div class="card" id="stock-notes">
+      <div class="item item-divider">Notes <span ng-click="addNote()" class="add-stock-note">Add <i class="icon ion-ios-plus"></i></span></div>
+      <div class="item" ng-repeat="note in stockNotes track by $index" ng-click="openNote($index, note.title, note.body)">
+        <h2>{{note.title}}</h2>
+        <h6>{{note.date | date:'yyyy-MMM-dd'}}</h6>
+        <div>{{note.body}}</div>
       </div>
     </div>
 
